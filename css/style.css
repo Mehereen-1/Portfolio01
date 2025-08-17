@@ -1,0 +1,137 @@
+/* === General Setup === */
+body {
+    margin: 0;
+    font-family: "Times New Roman", Georgia, serif;
+    background: url('../assets/images/newspaper-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: blur(6px); /* Blur effect */
+    -webkit-backdrop-filter: blur(6px);
+    color: #111;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* === Newspaper Header === */
+header.newspaper-header {
+    text-align: center;
+    border-bottom: 6px double #000;
+    background: rgba(251, 251, 249, 0.5);
+    padding: 25px 10px;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-family: "Georgia", serif;
+    letter-spacing: 2px;
+    margin: 0;
+    text-transform: uppercase;
+    border-bottom: 2px solid #b72194;
+    display: inline-block;
+    padding: 0 15px;
+}
+
+header .subtitle {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #333;
+    margin-top: 8px;
+}
+
+/* === Navigation like a newspaper section === */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    padding: 8px 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* === Newspaper Layout === */
+main.newspaper-layout {
+    column-count: 2;
+    column-gap: 40px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.85);
+    max-width: 1100px;
+    margin: 30px auto;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* Each article styled like a column story */
+article, aside {
+    break-inside: avoid;
+    margin-bottom: 20px;
+}
+
+article h2, aside h3 {
+    font-family: "Georgia", serif;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #000;
+    margin-bottom: 10px;
+}
+
+article p, aside p, aside li {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* === Contact Form === */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.contact-form input, 
+.contact-form textarea, 
+.contact-form button {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #666;
+    font-family: "Georgia", serif;
+}
+
+.contact-form button {
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.contact-form button:hover {
+    background: #444;
+}
+
+/* === Footer === */
+footer {
+    border-top: 3px double #000;
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    font-style: italic;
+}
