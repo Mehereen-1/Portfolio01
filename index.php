@@ -1,65 +1,80 @@
+<!-- <?php include('includes/db.php'); ?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Portfolio Newspaper</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- boxicon link -->
+     <link rel="stylesheet"
+        href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- google font link link -->
+     <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Nunito:wght@400;700&family=Quicksand:wght@400;600&family=Fredoka+One&family=Patrick+Hand&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <?php include 'includes/header.php'; ?>
+    <?php include('includes/db.php'); ?>
+     <?php include('includes/header.php'); 
+     $sql = "SELECT * FROM temp LIMIT 6"; // Limit to show only 6 projects
+        $result = mysqli_query($connection, $sql);
+     ?>
+     
 
-    <main class="newspaper-layout">
-        <!-- Lead Story -->
-        <article>
-            <h2>Breaking News: A Developer’s Journey</h2>
-            <p>From tinkering with basic HTML pages to building dynamic full-stack applications, 
-               this developer’s story is one of persistence, curiosity, and creativity. 
-               What started as a hobby evolved into a profession, blending technology with art.</p>
-        </article>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Discover my creative journey and the projects I've worked on.</p>
+            <a href="projects.php" class="btn">View Projects</a>
+        </div>
+    </section>
 
-        <!-- Project Highlights -->
-        <article>
-            <h2>Featured Project: Portfolio Website</h2>
-            <p>This very newspaper-style portfolio stands as a creative experiment—merging 
-               traditional print aesthetics with modern web technologies like HTML, CSS, JavaScript, and PHP. 
-               The goal: to present work as if each project is a story worth publishing.</p>
-        </article>
+    <!-- Featured Projects Section -->
+    <section class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <?php
+                // Check if there are any projects
+                if (mysqli_num_rows($result) > 0) {
+                    // Loop through each project and create a card
+                    while ($project = mysqli_fetch_assoc($result)) {
+                        // Get the project details
+                        $title = htmlspecialchars($project['title']);
+                        $description = htmlspecialchars($project['description']);
+                        $image_url = 'assets/images/' . htmlspecialchars($project['image_url']);
+                        $project_link = 'project.php?id=' . $project['id']; // Assuming you have a project page
+                ?>
+                    <!-- Project Card -->
+                    <div class="project-card">
+                        <a href="<?php echo $project_link; ?>" class="project-thumb">
+                            <img src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>">
+                        </a>
+                        <div class="project-body">
+                            <h3 class="project-title"><?php echo $title; ?></h3>
+                            <p class="project-desc"><?php echo mb_strimwidth($description, 0, 140, '...'); ?></p>
+                            <div class="project-actions">
+                                <a class="btn btn-primary" href="<?php echo $project_link; ?>">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                    }
+                } else {
+                    echo "<p>No projects found.</p>";
+                }
+                ?>
+            </div>
+        </div>
+    </section>
 
-        <article>
-            <h2>Tech Column: Current Tools</h2>
-            <p>Regularly experimenting with frameworks and languages, the toolkit includes React, PHP, and Node.js. 
-               The focus is always on building clean, user-friendly experiences while keeping performance in mind.</p>
-        </article>
+    <footer>
+        <p>© 2025 My Portfolio | All Rights Reserved</p>
+    </footer>
 
-        <!-- Sidebar Column -->
-        <aside>
-            <h3>Quick Facts</h3>
-            <ul>
-                <li>💻 Loves clean code & creative design</li>
-                <li>📚 Reads about tech & philosophy</li>
-                <li>🎨 Enjoys UI/UX sketching</li>
-                <li>🌍 Based in Bangladesh</li>
-            </ul>
-        </aside>
-
-        <!-- Extra Story -->
-        <article>
-            <h2>Opinion: Why Web Development Feels Like Writing</h2>
-            <p>Building websites isn’t just about code—it’s about storytelling. 
-               Each function is like a sentence, each component like a paragraph, 
-               and together they form an article that users interact with every day.</p>
-        </article>
-
-        <!-- Another Story -->
-        <article>
-            <h2>Upcoming Features</h2>
-            <p>Future plans for this portfolio include integrating a blog section, 
-               showcasing code snippets like news clippings, and adding interactive project demos 
-               to let readers experience the work firsthand.</p>
-        </article>
-    </main>
-
-    <?php include 'includes/footer.php'; ?>
-    <!-- <script src="js/script.js"></script> -->
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
