@@ -1,80 +1,90 @@
-<!-- <?php include('includes/db.php'); ?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- boxicon link -->
-     <link rel="stylesheet"
-        href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <!-- google font link link -->
-     <!-- Google Fonts -->
+    <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Nunito:wght@400;700&family=Quicksand:wght@400;600&family=Fredoka+One&family=Patrick+Hand&display=swap" rel="stylesheet">
 
 </head>
+
+<?php
+include('includes/db.php'); // Database connection
+
+// Fetch the projects from the database
+$sql = "SELECT * FROM projects"; // Fetch the first 6 projects
+$result = mysqli_query($connection, $sql);
+mysqli_close($connection);
+//echo "Database disconnected successfully.";
+
+if (!$result) {
+    die("Error executing query: " . mysqli_error($connection));
+}
+?>
+
 <body>
-    <?php include('includes/db.php'); ?>
-     <?php include('includes/header.php'); 
-     $sql = "SELECT * FROM temp LIMIT 6"; // Limit to show only 6 projects
-        $result = mysqli_query($connection, $sql);
-     ?>
-     
+    <!-- header -->
+    <?php include 'includes/header.php'; ?>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Discover my creative journey and the projects I've worked on.</p>
-            <a href="projects.php" class="btn">View Projects</a>
-        </div>
+    <div class="hero-text">
+        <h1>
+            Aloe there, I'm <span class="highlight">Ayesha Mehereen.</span> <span class="emoji">⭐</span>
+        </h1>
+        <p>
+            <span class="emoji">✺</span> A developer who thrives in collaborative and playful spaces. 
+            <span class="emoji">✹</span> Building human-centric tools, a community of learners, and 
+            a vibrant creative hub. 
+            <span class="emoji">✷ ✸ ✦</span>
+        </p>
+    </div>
     </section>
+
 
     <!-- Featured Projects Section -->
-    <section class="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="project-grid">
-                <?php
-                // Check if there are any projects
-                if (mysqli_num_rows($result) > 0) {
-                    // Loop through each project and create a card
-                    while ($project = mysqli_fetch_assoc($result)) {
-                        // Get the project details
-                        $title = htmlspecialchars($project['title']);
-                        $description = htmlspecialchars($project['description']);
-                        $image_url = 'assets/images/' . htmlspecialchars($project['image_url']);
-                        $project_link = 'project.php?id=' . $project['id']; // Assuming you have a project page
-                ?>
-                    <!-- Project Card -->
-                    <div class="project-card">
-                        <a href="<?php echo $project_link; ?>" class="project-thumb">
-                            <img src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>">
-                        </a>
-                        <div class="project-body">
-                            <h3 class="project-title"><?php echo $title; ?></h3>
-                            <p class="project-desc"><?php echo mb_strimwidth($description, 0, 140, '...'); ?></p>
-                            <div class="project-actions">
-                                <a class="btn btn-primary" href="<?php echo $project_link; ?>">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-                <?php
-                    }
-                } else {
-                    echo "<p>No projects found.</p>";
-                }
-                ?>
+    <section id="projects" class="projects">
+    <?php
+    if (mysqli_num_rows($result) > 0) {
+        $i = 0;
+        while ($project = mysqli_fetch_assoc($result)) {
+            $title = htmlspecialchars($project['title']);
+            $description = htmlspecialchars($project['description']);
+            // $image_url = 'assets/images/' . htmlspecialchars($project['image_url']);
+            $image_url = 'assets/images/project1.png';
+    ?>
+    <!-- Project Card -->
+    <div class="project-card <?php echo $i === 0 ? 'active' : ''; ?>">
+        <div class="project-content">
+            <div class="project-image">
+                <img src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>">
+            </div>
+            <div class="project-text">
+                <h2><?php echo $title; ?></h2>
+                <p><?php echo $description; ?></p>
             </div>
         </div>
-    </section>
+        <button class="next-btn">→</button>
+    </div>
+    <?php
+            $i++;
+        }
+    } else {
+        echo "<p>No projects found.</p>";
+    }
+    ?>
+</section>
 
-    <footer>
-        <p>© 2025 My Portfolio | All Rights Reserved</p>
-    </footer>
 
-    <script src="assets/js/script.js"></script>
+
+    <!-- Footer -->
+    <?php include 'includes/footer.php'; ?>
+
+    <script src="js/script.js"></script>
+    
+
 </body>
 </html>

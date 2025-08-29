@@ -1,32 +1,20 @@
-// js/script.js
-(function(){
-  const burger = document.querySelector('.hamburger');
-  const nav = document.querySelector('.nav');
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".project-card");
+    let current = 0;
 
-  if (burger && nav) {
-    burger.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      burger.setAttribute('aria-expanded', String(isOpen));
-      // swap icon
-      burger.innerHTML = isOpen ? "<i class='bx bx-x'></i>" : "<i class='bx bx-menu'></i>";
+    function showCard(index) {
+        cards.forEach((card, i) => {
+            card.classList.toggle("active", i === index);
+        });
+    }
+
+    document.querySelectorAll(".next-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            current = (current + 1) % cards.length; // loop back to first card
+            showCard(current);
+        });
     });
 
-    // close on escape
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape' && nav.classList.contains('open')){
-        nav.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-        burger.innerHTML = "<i class='bx bx-menu'></i>";
-      }
-    });
-
-    // close if clicking a link (mobile)
-    nav.addEventListener('click', (e)=>{
-      if(e.target.matches('.nav a, .nav .nav-link')){
-        nav.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-        burger.innerHTML = "<i class='bx bx-menu'></i>";
-      }
-    });
-  }
-})();
+    // Initial display
+    showCard(current);
+});
