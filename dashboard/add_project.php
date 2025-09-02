@@ -1,7 +1,5 @@
 <?php
 
-// include('../includes/db.php');
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];
     $description = $_POST['description'];
@@ -16,6 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $title, $description, $_FILES["image"]["name"]);
     $stmt->execute();
     echo "<p>Project added!</p>";
-    mysqli_close($connection);
+    header("Location: dashboard.php");
 }
 ?>
+
+<h2>Add New Project</h2>
+<form method="POST" enctype="multipart/form-data">
+    <input type="text" name="title" placeholder="Title" required><br>
+    <textarea name="description" placeholder="Description" required></textarea><br>
+    <input type="file" name="image" required><br>
+    <button type="submit">Add Project here</button>
+</form>
