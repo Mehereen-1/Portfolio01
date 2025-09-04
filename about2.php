@@ -86,5 +86,6 @@ $skills = $connection->query("SELECT * FROM skills ORDER BY id DESC");
       </ul>
     </div>
   </section>
+  <?php include 'includes/footer.php'; ?>
 </body>
 </html>

@@ -19,7 +19,7 @@ $base_url = "/Portfolio/"; // adjust to your XAMPP folder
   <?php else: ?>
     <ul class="nav-links">
       <li><a href="<?php echo $base_url; ?>index.php">Home</a></li>
-      <li><a href="<?php echo $base_url; ?>about.php">About</a></li>
+      <li><a href="<?php echo $base_url; ?>about2.php">About</a></li>
       <li><a href="<?php echo $base_url; ?>projects.php">Projects</a></li>
       <li><a href="<?php echo $base_url; ?>contact.php">Contact</a></li>
       <li><a href="<?php echo $base_url; ?>login.php">Login</a></li>
