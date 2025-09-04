@@ -21,7 +21,7 @@ include('../includes/db.php');
   <?php include '../includes/header.php'; ?>
 
   <div class="dashboard-container">
-    <h1 class="dashboard-title">Author Dashboard</h1>
+    <h1 class="dashboard-title">Mehereen's Dashboard</h1>
 
     <div class="dashboard-links">
       <div class="dashboard-card">

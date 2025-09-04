@@ -1,29 +1,30 @@
 <?php
-// session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     header("Location: dashboard/dashboard.php");
     exit;
 }
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
     $name = "ayesha";
-    $pass = '12345';
+    $pass = "portfolio123";
     
     if ($username === $name && $password === $pass) {
         $_SESSION['loggedin'] = true;
-        // header("Location: index.php");
         header("Location: dashboard/dashboard.php");
         exit;
     } else {
-        $error = "Invalid password!";
+        $error = "Invalid username or password!";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

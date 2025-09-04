@@ -1,4 +1,6 @@
 <?php
+include 'includes/db.php';
+
 // Dynamic variables for content
 $name = "Ayesha Mehereen";
 $location = "Khulna, Bangladesh";
@@ -9,6 +11,15 @@ $degree = "BSC in Computer Science & Engineering";
 $concentrations = "Problem Solving, Web Development";
 $minor = "Business";
 $educationYears = "August 2023 – May 2027";
+
+// Fetch experiences
+$experiences = $connection->query("SELECT * FROM experiences ORDER BY id DESC");
+
+// Fetch education
+$education = $connection->query("SELECT * FROM education ORDER BY id DESC");
+
+// Fetch skills
+$skills = $connection->query("SELECT * FROM skills ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +32,10 @@ $educationYears = "August 2023 – May 2027";
 </head>
 <body>
     <?php include 'includes/header.php'; ?>
+
   <section class="intro">
     <div class="id-card">
-      <img src="profile.jpg" alt="<?php echo $name; ?>" class="profile-pic">
+      <!-- <img src="profile.jpg" alt="<?php echo $name; ?>" class="profile-pic"> -->
       <h2><?php echo $name; ?></h2>
       <p><strong>Location:</strong> <?php echo $location; ?></p>
       <p><strong>Role:</strong> <?php echo $role; ?></p>
@@ -34,54 +46,43 @@ $educationYears = "August 2023 – May 2027";
         <span class="blue">H</span><span class="orange">e</span><span class="yellow">L</span><span class="pink">L</span><span class="purple">o</span> 👋
       </h1>
       <p>I’m Mehereen, a student at <strong><?php echo $school; ?></strong> studying Computer Science and Engineering.</p>
-      <p>Growing up crafting DIY projects out of random miscellanea, from rubics cube to math puzzles, I’ve always enjoyed the sensation of problem solving. Curious about this world of creation, I found myself channeling my explorations to various other outlets—namely apparel & graphic design, photography, and teaching arts & crafts to youth.</p>
-      <p>Then, I discovered product design in college—I found it to be an incredibly transformative avenue through which I could connect my creative interests with unique storytelling and innovative solution-making. By being intentional in the way I design, I aim to create in such a way that fosters accessibility, connection, and joyful human experiences for social good.</p>
+      <p>Growing up I always found crafting and DIY attractive. Alongside these, from rubics cube to word puzzles to math teasers I always found joy in the art of problem solving. I engaged in club activities from a young age. I was a part of Bangladesh Math Olympiad Team and as a child I took part in science fairs, language club and Olympiads very regularly.</p>
     </div>
   </section>
 
   <section class="details">
+    <!-- Experiences -->
     <div class="experience">
       <h2>💼 Experiences</h2>
       <ul>
-        <li><span class="pink">Product Design Intern</span> @ Apple — <em>May – Aug 2025</em></li>
-        <li><span class="blue">Contract Product Designer</span> @ Lenovo — <em>Jan – May 2025</em></li>
-        <li><span class="orange">Contract Product Designer</span> @ SoFi — <em>Jan – May 2024</em></li>
-        <li><span class="purple">Design Lead</span> @ Digital Tech & Innovation Engineering Team — <em>Feb 2024 – Present</em></li>
-        <li><span class="yellow">UX Lead / Design Consultant</span> @ Design Consulting Cornell — <em>Sep 2023 – Present</em></li>
-        <li><span class="green">UX & Game Design Intern</span> @ Ai-Learners — <em>May – Aug 2024</em></li>
-        <li><span class="pink">UX Project Manager</span> @ AlgoLink — <em>Aug – Dec 2024</em></li>
-        <li><span class="blue">Publicity Director</span> @ Cornell Chinese Students Association — <em>Aug 2024 – Present</em></li>
-        <li><span class="orange">Arts & Crafts Teacher</span> @ NYC Dept. of Education & YMCA — <em>Jul 2021 – Aug 2024</em></li>
-        <li><span class="green">Design & Marketing Director</span> @ Flushing Business Improvement District — <em>Jul 2022 – Aug 2024</em></li>
+        <?php while($row = $experiences->fetch_assoc()): ?>
+          <li>
+            <span class="pink"><?php echo htmlspecialchars($row['exp_name']); ?></span> 
+            @ <?php echo htmlspecialchars($row['company']); ?> — 
+            <em><?php echo htmlspecialchars($row['time']); ?></em>
+          </li>
+        <?php endwhile; ?>
       </ul>
     </div>
 
+    <!-- Education -->
     <div class="education">
       <h2>🎓 Education</h2>
-      <p><strong><?php echo $degree; ?></strong> @ <span class="pink"><?php echo $school; ?></span></p>
-      <p><?php echo $concentrations; ?> Concentrations</p>
-      <p><?php echo $educationYears; ?></p>
+      <?php while($row = $education->fetch_assoc()): ?>
+        <p><strong><?php echo htmlspecialchars($row['degree']); ?></strong> 
+           @ <span class="pink"><?php echo htmlspecialchars($row['institution']); ?></span></p>
+        <p><?php echo htmlspecialchars($row['start_time']); ?> – <?php echo htmlspecialchars($row['end_time']); ?></p>
+      <?php endwhile; ?>
     </div>
 
+    <!-- Skills -->
     <div class="skills">
       <h2>🛠 Toolkit</h2>
       <h3>Skills</h3>
       <ul>
-        <li>UX/UI</li>
-        <li>UX Research</li>
-        <li>Wireframing</li>
-        <li>Prototyping</li>
-        <li>Design Systems</li>
-        <li>Graphic Design</li>
-        <li>Apparel Design</li>
-      </ul>
-      <h3>Tools</h3>
-      <ul>
-        <li>Figma, Sketch, Procreate</li>
-        <li>Adobe Illustrator, InDesign, Photoshop, Lightroom, After Effects</li>
-        <li>Framer</li>
-        <li>HTML/CSS, JavaScript</li>
-        <li>Python, Java, R</li>
+        <?php while($row = $skills->fetch_assoc()): ?>
+          <li><?php echo htmlspecialchars($row['skill_name']); ?></li>
+        <?php endwhile; ?>
       </ul>
     </div>
   </section>

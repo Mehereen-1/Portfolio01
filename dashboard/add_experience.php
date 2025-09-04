@@ -5,12 +5,12 @@ include('../includes/db.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_experience'])) {
     $exp_name = trim($_POST['exp_name']);
     $company = trim($_POST['company']);
-    $duration = trim($_POST['duration']); // fixed name
+    $time = trim($_POST['time']); // fixed name
 
-    if (!empty($exp_name) && !empty($company) && !empty($duration)) {
-        $sql = "INSERT INTO experiences (exp_name, company, duration) VALUES (?, ?, ?)";
+    if (!empty($exp_name) && !empty($company) && !empty($time)) {
+        $sql = "INSERT INTO experiences (exp_name, company, time) VALUES (?, ?, ?)";
         $stmt = $connection->prepare($sql);
-        $stmt->bind_param("sss", $exp_name, $company, $duration);
+        $stmt->bind_param("sss", $exp_name, $company, $time);
 
         if ($stmt->execute()) {
             header("Location: add_experience.php");
@@ -57,7 +57,7 @@ if (isset($_GET['delete_id'])) {
     <form method="POST" class="experience-form">
         <input type="text" name="exp_name" placeholder="Enter Your Experience" required>
         <input type="text" name="company" placeholder="Company" required>
-        <input type="text" name="duration" placeholder="Duration" required>
+        <input type="text" name="time" placeholder="Duration" required>
         <button type="submit" name="add_experience" class="btn-submit">Add Experience</button>
     </form>
   </div>

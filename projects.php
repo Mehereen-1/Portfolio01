@@ -117,7 +117,8 @@ if ($result->num_rows > 0) {
             <h2 class="item-title"><?php echo $project['title']; ?></h2>
 
             <div class="item-image">
-                <img src="<?php echo $project['image_url']; ?>" alt="<?php echo $project['title']; ?>">
+                <img src="./assets/images/<?php echo $project['image_url']; ?>" alt="<?php echo $project['title']; ?>">
+
             </div>
 
             <p class="item-overview"><?php echo $project['overview']; ?></p>

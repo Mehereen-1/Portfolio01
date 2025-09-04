@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="text" name="github_link" value="<?php echo htmlspecialchars($project['github_link']); ?>">
 
       <label>Timeline</label>
-      <input type="date" name="timeline" value="<?php echo htmlspecialchars($project['timeline']); ?>">
+      <input type="text" name="timeline" value="<?php echo htmlspecialchars($project['timeline']); ?>">
 
       <p><strong>Current Image:</strong></p>
       <img src="../assets/images/<?php echo htmlspecialchars($project['image_url']); ?>" alt="Project Image" style="width:150px; border-radius:8px; margin-bottom:15px;">

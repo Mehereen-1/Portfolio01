@@ -15,7 +15,7 @@
 include('includes/db.php'); // Database connection
 
 // Fetch the projects from the database
-$sql = "SELECT * FROM projects"; // Fetch the first 6 projects
+$sql = "SELECT * FROM projects";
 $result = mysqli_query($connection, $sql);
 mysqli_close($connection);
 //echo "Database disconnected successfully.";
@@ -36,9 +36,9 @@ if (!$result) {
             Hello there, I'm <span class="highlight">Ayesha Mehereen.</span> <span class="emoji">⭐</span>
         </h1>
         <p>
-            <span class="emoji">✺</span> A student who enjoys learning and solving problems. 
-            <span class="emoji">✹</span> Trying to make the world a better place through code.
-            <span class="emoji">✷ ✸ ✦</span>
+            <span class="emoji">🍄</span> A student who enjoys learning and solving problems. 
+            <span class="emoji"></span> Trying to make the world a better place through code.
+            <span class="emoji">🍄</span>
         </p>
     </div>
     </section>

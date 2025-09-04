@@ -45,7 +45,7 @@ body {
 .navbar ul li a {
     text-decoration: none;
     font-weight: 600;
-    color: #ff4081;
+    color: #ff7f50;
     transition: color 0.3s;
 }
 
@@ -58,6 +58,22 @@ body {
     color: pink;
     font-size: 1.2rem;
 }
+
+.logo a {
+  font-family: "Dancing Script", cursive;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #2c6e49; /* deep green (like a leaf 🌿) */
+  /* letter-spacing: 1px; */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.logo a:hover {
+  color: #ff7f50; /* coral on hover */
+  transform: scale(1.05);
+}
+
 
 /* Hamburger Menu */
 .hamburger {
@@ -149,7 +165,7 @@ body {
 
 /* Highlighted name */
 .hero-text .highlight {
-    color: #ff4081; /* warm orange */
+    color: #ff7f50; /* warm orange */
 }
 
 /* Emoji / Icon styling */

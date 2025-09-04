@@ -9,9 +9,9 @@
     </p>
     
     <div class="footer-icons">
-      <a href="mailto:yourmail@example.com">✉️</a>
-      <a href="https://www.linkedin.com" target="_blank">in</a>
-      <a href="https://www.instagram.com" target="_blank">📷</a>
+      <a href="mailto:ayesha.mehereen0@gmail.com">✉️</a>
+      <a href="https://www.linkedin.com/in/ayesha-mehereen-a5a655253/" target="_blank">in</a>
+      <a href="https://github.com/Mehereen-1"><i class="fab fa-github"></i></a>
     </div>
 
     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top">
@@ -19,7 +19,7 @@
     </button>
 
     <p class="made-with">
-      Made with ❤️ 🎵 🍹 by <span class="author">Mehereen</span> © <span id="year"></span>
+      Made with ❤️ 🌻 🍹 by <span class="author">Mehereen</span> © <span id="year"></span>
     </p>
   </div>
 </footer>
