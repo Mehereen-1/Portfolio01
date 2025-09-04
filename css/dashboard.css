@@ -1,0 +1,135 @@
+/* Form Container */
+.dash-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: #2c6e49;
+    font-size: 1.8rem;
+}
+
+/* Form Fields */
+.experience-form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.experience-form input:focus {
+    border-color: #2c6e49;
+}
+
+/* Submit Button */
+.btn-submit {
+    background: #2c6e49;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+    background: #1e4d34;
+    transform: translateY(-2px);
+}
+
+/* List Container */
+.list-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.list-container h3 {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Experience List */
+.experience-list {
+    list-style: none;
+    padding: 0;
+}
+
+.experience-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 12px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+.experience-list li:hover {
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+.experience-list span {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Delete Button */
+.btn-delete {
+    color: #fff;
+    background: #d64123;
+    padding: 8px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.btn-delete:hover {
+    background: #a8321a;
+}
+.education-form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.education-form input:focus {
+    border-color: #2c6e49;
+}
+
+.education-list {
+    list-style: none;
+    padding: 0;
+}
+
+.education-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 12px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}

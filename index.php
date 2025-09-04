@@ -33,12 +33,11 @@ if (!$result) {
     <section class="hero">
     <div class="hero-text">
         <h1>
-            Aloe there, I'm <span class="highlight">Ayesha Mehereen.</span> <span class="emoji">⭐</span>
+            Hello there, I'm <span class="highlight">Ayesha Mehereen.</span> <span class="emoji">⭐</span>
         </h1>
         <p>
-            <span class="emoji">✺</span> A developer who thrives in collaborative and playful spaces. 
-            <span class="emoji">✹</span> Building human-centric tools, a community of learners, and 
-            a vibrant creative hub. 
+            <span class="emoji">✺</span> A student who enjoys learning and solving problems. 
+            <span class="emoji">✹</span> Trying to make the world a better place through code.
             <span class="emoji">✷ ✸ ✦</span>
         </p>
     </div>
@@ -46,6 +45,8 @@ if (!$result) {
 
 
     <!-- Featured Projects Section -->
+    <h1 class="featured-heading">Featured Projects</h1>
+
     <section id="projects" class="projects">
     <?php
     if (mysqli_num_rows($result) > 0) {
@@ -53,11 +54,11 @@ if (!$result) {
         while ($project = mysqli_fetch_assoc($result)) {
             $title = htmlspecialchars($project['title']);
             $description = htmlspecialchars($project['description']);
-            // $image_url = 'assets/images/' . htmlspecialchars($project['image_url']);
-            $image_url = 'assets/images/project1.png';
+            $image_url = './assets/images/' . htmlspecialchars($project['image_url']);
+            //$image_url = 'assets/images/project1.png';
     ?>
     <!-- Project Card -->
-    <div class="project-card <?php echo $i === 0 ? 'active' : ''; ?>">
+    <div class="project-card <?php echo $i === 0 ? 'active' : ''; ?> " id="project-<?php echo $i; ?>">
         <div class="project-content">
             <div class="project-image">
                 <img src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>">
@@ -66,8 +67,17 @@ if (!$result) {
                 <h2><?php echo $title; ?></h2>
                 <p><?php echo $description; ?></p>
             </div>
+            <!-- Buttons -->
+            <div class="project-buttons">
+                <a href="projects.php?id=<?php echo $i; ?>">
+                    <button class="see-more-btn">See More</button>
+                </a>
+                <a href="<?php echo $github_url; ?>" target="_blank">
+                    <button class="github-btn">GitHub</button>
+                </a>
+            </div>
+            <button class="next-btn">→</button>
         </div>
-        <button class="next-btn">→</button>
     </div>
     <?php
             $i++;
@@ -76,7 +86,7 @@ if (!$result) {
         echo "<p>No projects found.</p>";
     }
     ?>
-</section>
+    </section>
 
 
 

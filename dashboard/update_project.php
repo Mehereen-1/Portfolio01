@@ -50,17 +50,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!-- Step 3: Show update form -->
-<h1>Edit Project</h1>
-<form method="POST" enctype="multipart/form-data">
-    <input type="text" name="title" value="<?php echo htmlspecialchars($project['title']); ?>" required><br>
-    <textarea name="description" required><?php echo htmlspecialchars($project['description']); ?></textarea><br>
-    <textarea name="overview" placeholder="Overview"><?php echo htmlspecialchars($project['overview']); ?></textarea><br>
-    <input type="text" name="github_link" placeholder="GitHub Link" value="<?php echo htmlspecialchars($project['github_link']); ?>"><br>
-    <input type="date" name="timeline" value="<?php echo htmlspecialchars($project['timeline']); ?>"><br>
-    
-    <p>Current Image: <?php echo $project['image_url']; ?></p>
-    <input type="file" name="image"><br>
-    
-    <button type="submit">Update Project</button>
-</form>
+<?php include '../includes/header.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Project</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Edit Project</h2>
+    <form method="POST" enctype="multipart/form-data" class="project-form">
+
+      <label>Title</label>
+      <input type="text" name="title" value="<?php echo htmlspecialchars($project['title']); ?>" required>
+
+      <label>Description</label>
+      <textarea name="description" required><?php echo htmlspecialchars($project['description']); ?></textarea>
+
+      <label>Overview</label>
+      <textarea name="overview" placeholder="Overview"><?php echo htmlspecialchars($project['overview']); ?></textarea>
+
+      <label>GitHub Link</label>
+      <input type="text" name="github_link" value="<?php echo htmlspecialchars($project['github_link']); ?>">
+
+      <label>Timeline</label>
+      <input type="date" name="timeline" value="<?php echo htmlspecialchars($project['timeline']); ?>">
+
+      <p><strong>Current Image:</strong></p>
+      <img src="../assets/images/<?php echo htmlspecialchars($project['image_url']); ?>" alt="Project Image" style="width:150px; border-radius:8px; margin-bottom:15px;">
+
+      <label>Upload New Image</label>
+      <input type="file" name="image">
+
+      <button type="submit" class="btn-submit">Update Project</button>
+    </form>
+  </div>
+</body>
+</html>

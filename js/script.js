@@ -18,3 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial display
     showCard(current);
 });
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash;
+    if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});

@@ -1,0 +1,98 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background: #fff;
+}
+
+/* Intro section */
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.id-card {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  width: 260px;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.id-card .profile-pic {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.bio {
+  flex: 1;
+  max-width: 700px;
+}
+
+.hello {
+  font-size: 52px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Colorful letters */
+.hello .blue { color: #007bff; }
+.hello .orange { color: #ff7f50; }
+.hello .yellow { color: #f9c80e; }
+.hello .pink { color: #ff4081; }
+.hello .purple { color: #9c27b0; }
+.hello .green { color: #28a745; }
+
+/* Details section */
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  padding: 40px;
+  background: #fdf6f9;
+}
+
+.details h2 {
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.details ul {
+  padding-left: 18px;
+}
+
+.details li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Education box */
+.education {
+  background: #e3f2fd;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Skills */
+.skills {
+  background: #fff3e0;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.skills h3 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: #555;
+}

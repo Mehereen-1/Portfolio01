@@ -1,32 +1,30 @@
 <?php
-// includes/header.php
-$current = basename($_SERVER['SCRIPT_NAME']); // e.g., index.php
-function active($file, $current) { return $file === $current ? 'active' : ''; }
+session_start();
+$base_url = "/Portfolio/"; // adjust to your XAMPP folder
 ?>
-<!-- Navbar -->
-    <header class="navbar" id = "navbar">
-        <div class="logo">
-            <img src="assets/images/logo.png" alt="Logo">
-        </div>
+<header class="navbar" id  ="navbar">
+  <div class="logo">
+    <a href="<?php echo $base_url; ?>index.php"><img src="<?php echo $base_url; ?>images/logo.png" alt="Logo"></a>
+  </div>
 
-         <!-- Hamburger Icon for mobile -->
-        <div class="hamburger" id="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-
-        <nav>
-            <ul>
-                <li><a href="index.php">HOME</a></li>
-                <li><a href="#projects">PROJECTS</a></li>
-                <li><a href="about.php">ABOUT</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-                <li><a href='login.php'>LOGIN</a></li>
-            </ul>
-        </nav>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-        </div>
-    </header>
+  <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+    <!-- Show this UL when logged in -->
+    <ul class="nav-links">
+      <li><a href="<?php echo $base_url; ?>index.php">Home</a></li>
+      <li><a href="<?php echo $base_url; ?>about2.php">About</a></li>
+      <li><a href="<?php echo $base_url; ?>projects.php">Projects</a></li>
+      <li><a href="<?php echo $base_url; ?>contact.php">Contact</a></li>
+      <li><a href="<?php echo $base_url; ?>dashboard/dashboard.php">Dashboard</a></li>
+      <li><a href="<?php echo $base_url; ?>logout.php">Logout</a></li>
+    </ul>
+  <?php else: ?>
+    <!-- Show this UL when logged out -->
+    <ul class="nav-links">
+      <li><a href="<?php echo $base_url; ?>index.php">Home</a></li>
+      <li><a href="<?php echo $base_url; ?>about.php">About</a></li>
+      <li><a href="<?php echo $base_url; ?>projects.php">Projects</a></li>
+      <li><a href="<?php echo $base_url; ?>contact.php">Contact</a></li>
+      <li><a href="<?php echo $base_url; ?>login.php">Login</a></li>
+    </ul>
+  <?php endif; ?>
+</header>
